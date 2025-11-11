@@ -2,7 +2,8 @@
 authors = ["Fitz (Philip Fitzsimons)"]
 language = "en"
 src = "src"
-title = "Well-Architected II"
+title = "Well-Architected 2"
+description = "A modern approach to technology architecture"
 
 [build]
 build-dir = "public"

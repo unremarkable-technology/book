@@ -1,4 +1,4 @@
-# Well-Architected II - time for a new framework?
+# Well-Architected 2 - time for a new framework?
 
 Over ten years ago I helped launch[^1] 𝘞𝘦𝘭𝘭-𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘦𝘥 to 
 help people build better systems. It set a standard - 
@@ -6,12 +6,12 @@ and others followed. Fourteen plus frameworks later,
 most haven't kept pace with how we really build and 
 operate technology today.
 
-So... is it time for **Well-Architected II**?
+So... is it time for **Well-Architected 2**? (WA2)
 
 Those who know me know I don't trust my instincts or opinions too much -
 I'd never write a new version without data. So, a quick poll[^2]:
 
-**Should we create Well-Architected II?** [https://well.architected.to/](https://well.architected.to/)[^3]
+**Should we create Well-Architected 2?** [https://well.architected.to/](https://well.architected.to/)[^3]
 
 * ✅ Yes - time for a new one
 * 🤔 Maybe - needs discussion
@@ -40,7 +40,10 @@ Many of the current frameworks suffer from the same issues:
   * Brownfield refactoring ignored
   * Requirements / Compliance/ Specification
 
-If we're going to create *Well-Architected II*, it has to be **data-driven, cross-vendor, lean, and effective** - the sort of framework that just works.
+If we're going to create *Well-Architected 2*, it has to be **data-driven, cross-vendor, lean, and effective** - the sort of framework that just works.
+
+## Naming
+Full name is "**Well-Architected 2**", which we can shorten to "**WA2**"
 
 ---
 [^1]: I co-authored the original #AWS #WellArchitectedFramework, launched at 
