@@ -4,7 +4,7 @@
 	From: London, UK
 
 /* SITE */
-	Last update: 2025/11/1
+	Last update: 2025/11/11
 	Language: English
 	Doctype: HTML5
 	Stack: mdbook, Cloudflare
