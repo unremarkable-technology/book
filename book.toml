@@ -6,3 +6,6 @@ title = "Well-Architected II"
 
 [build]
 build-dir = "public"
+
+[output.html]
+additional-js = ["theme/footer.js"]
