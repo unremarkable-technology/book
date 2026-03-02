@@ -1,55 +1,63 @@
-# Well-Architected 2 - time for a new framework?
 
-Over ten years ago I helped launch[^1] 𝘞𝘦𝘭𝘭-𝘈𝘳𝘤𝘩𝘪𝘵𝘦𝘤𝘵𝘦𝘥 to 
-help people build better systems. It set a standard - 
-and others followed. Fourteen plus frameworks later, 
-most haven't kept pace with how we really build and 
-operate technology today.
 
-So... is it time for **Well-Architected 2**? (WA2)
+# Introduction
+Products are under constant pressure to change.
+Architectures must evolve with them.
 
-Those who know me know I don't trust my instincts or opinions too much -
-I'd never write a new version without data. So, a quick poll[^2]:
+Yet ensuring systems follow best practice is still largely manual.
 
-**Should we create Well-Architected 2?** [https://well.architected.to/](https://well.architected.to/)[^3]
+Best practices are in long PDFs, written without your context.
+Reviews happen late, risking expensive mistakes and incidents.
+All systems are distributed now, but best practice knowledge is not.
+Teams have hybrid, multi-vendor systems - but our tools reason about them one property at a time.
 
-* ✅ Yes - time for a new one
-* 🤔 Maybe - needs discussion
-* 😐 No opinion / unsure
-* 🚫 Please don’t - sequels fail
+Well-Architected 2 (WA2) is an architecture reasoning system.
 
-Comment if you think something's missing - or what you dislike about today's
-frameworks. I'm also keen to hear **how** you'd want to access it: book,
-mobile app, or dev tooling? And whichever you choose - what's the *one thing*
-you'd want from it?
+WA2 creates a graph of your system and evaluates it against your intent.
 
-Many of the current frameworks suffer from the same issues:
-- Overly complex, vendor-biased
-- Too large, not bite-sized or actionable
-- Slow to adapt to platform engineering and AI realities
-- Certification grind over actual learning
-- Tooling: missing, lacks dependency and visualisation
-- Not reacting to industry learnings: Wardley Maps, Residuality Theory,
-  vibe coding
-- Missing key focus areas like:
-  * Platform engineering / developer experience
-  * AI / Data
-  * Business and product alignment
-  * Governance / ethics
-  * Multi-cloud / cross-platform and vendor
-  * Brownfield refactoring ignored
-  * Requirements / Compliance/ Specification
+As you build or evolve architectures, WA2 guides you - explaining best practices, what they imply, and how their consequences ripple through your architecture.
 
-If we're going to create *Well-Architected 2*, it has to be **data-driven, cross-vendor, lean, and effective** - the sort of framework that just works.
+Instead of asking
+* Have you backed up this S3 bucket?
+WA2 determines
+* Are your *critical* stores protected from data loss?
 
-## Naming
-Full name is "**Well-Architected 2**", which we can shorten to "**WA2**"
+## What WA2 is
+WA2 consists of:
+* **Intents language**: a small language for expressing architectural policies.
+* **Framework**: vendor-independent best practices built on architectural concepts.
+* **Extension**: editor integration that guides you around problems as you build.
+* **CLI**: enforcement in CI/CD. [not done!]
+* **Book**: this guide, explaining both the thinking and the tool.
 
----
-[^1]: I co-authored the original #AWS #WellArchitectedFramework, launched at 
-#AWSreInvent 2015. This post is not affiliated with AWS. 
+## The Big Idea
 
-[^2]: [Linkedin poll](https://www.linkedin.com/posts/philipfitzsimons_wellarchitected2-aws-wellarchitectedframework-activity-7393620300497858560-QcWg)
+WA2 separates:
+* How a system is implemented
 
-[^3]: I know it *should* be `.two`, but sadly there's no such TLD yet - so
-`.to` it is. A small reminder that WA2 should be practical over theoretical.
+*from*
+* What it must guarantee
+
+Rules add evidence to a shared graph.
+Policies evaluate that evidence.
+
+Vendor-specific logic produces facts.
+Architectural intent consumes them.
+
+This keeps governance clean and portable.
+
+## Why This Matters
+Architecture has grown more complex.
+Our tooling has not kept up.
+
+WA2 changes how we think about architecture:
+* Architecture becomes queryable.
+* Best practices become executable.
+* Governance becomes scalable.
+* Vendor specifics become interchangeable.
+* Developers get guidance in context.
+
+# Current Scope
+
+* Today WA2 supports AWS CloudFormation (JSON & YAML).
+* It is designed to support additional systems over time.
