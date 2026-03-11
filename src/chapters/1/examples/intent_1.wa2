@@ -1,0 +1,26 @@
+use core
+use aws
+use aws:cfn
+use data
+
+// select which policies are active in this profile
+profile example {
+	policy require_classification
+}
+
+// we require everything is given a classification
+policy require_classification {
+	must all_cfn_rx_must_be_classified
+}
+
+// we need to know which cfn rx are critical
+rule all_cfn_rx_must_be_classified {
+	// everything that is a AWS CloudFormation Resource
+	for resource in query(aws:cfn:Resource) {
+		// resource must have a data:Criticality fact attached
+		must query(resource/data:Criticality) {
+			subject: resource,
+			message: "Resource must be classified"
+		}
+	}
+}

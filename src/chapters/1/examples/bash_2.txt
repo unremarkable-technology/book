@@ -1,0 +1,4 @@
+Stack stack_2.yaml: parsed and validated successfully.
+Intent intent_2.wa2: parsed and validated successfully.
+
+Success: stack does satisfy intent of profile example.

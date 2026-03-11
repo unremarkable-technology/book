@@ -1,0 +1,1 @@
+$ wa2 check --profile example --stack stack_1.yaml --intent intent_1.wa2
