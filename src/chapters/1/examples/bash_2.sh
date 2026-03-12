@@ -1,1 +1,1 @@
-$ wa2 check --profile example --stack stack_2.yaml --intent intent_2.wa2
+$ intent check --profile example --target stack_2.yaml --entry intent_2.wa2

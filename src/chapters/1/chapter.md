@@ -58,7 +58,6 @@ Let’s check the stack again:
 ```bash
 {{#include examples/bash_2.sh}}
 {{#include examples/bash_2.txt}}
-
 ```
 
 The policy is satisfied because the required architectural fact now exists.

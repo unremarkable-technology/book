@@ -1,4 +1,4 @@
-Stack stack_2.yaml: parsed and validated successfully.
-Intent intent_2.wa2: parsed and validated successfully.
+Target file stack_2.yaml: parsed and validated successfully.
+Entry file intent_2.wa2: intent parsed and validated successfully.
 
-Success: stack does satisfy intent of profile example.
+Success: target satisfies intent of profile example.
