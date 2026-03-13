@@ -1,5 +1,3 @@
-use core
-use aws
 use aws:cfn
 use data
 

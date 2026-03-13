@@ -12,3 +12,6 @@ curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v
 
 # Build book
 ./mdbook build -d public
+
+# Copy installer script to site root
+cp static/install-intent.sh public/install-intent.sh

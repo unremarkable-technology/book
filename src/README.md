@@ -1,53 +1,56 @@
 
 
 # Introduction
-Products are under constant pressure to change.
+Products and their context change constantly.  
 Architectures must evolve with them.
 
-Yet ensuring systems follow best practice is still largely manual.
+Yet ensuring systems follow best practices remains largely manual.
 
-Best practices are in long PDFs, written without your context.
+Best practices live in long PDFs, written without your context.
+Compliance becomes a checkbox exercise, replacing informed decisions with overly broad rules.
 Reviews happen late, risking expensive mistakes and incidents.
-All systems are distributed now, but best practice knowledge is not.
-Teams have hybrid, multi-vendor systems - but our tools reason about them one property at a time.
+All systems are now distributed, but best practice knowledge is not.
+Teams run hybrid, multi-vendor systems - but our tools reason about them one property at a time.
 
-Well-Architected 2 (WA2) is an architecture reasoning system.
+Well-Architected 2 (WA2) is an _architecture reasoning system_, not a compliance scanner.
 
-WA2 creates a graph of your system and evaluates it against your intent.
+WA2 builds a graph of your system and evaluates it against your intent.
 
-As you build or evolve architectures, WA2 guides you - explaining best practices, what they imply, and how their consequences ripple through your architecture.
+As you build or evolve architectures, WA2 guides you, explaining best practices, what they imply, and how their consequences ripple through your architecture.
 
-Instead of asking
+Instead of asking:
 * Have you backed up this S3 bucket?
-WA2 determines
-* Are your *critical* stores protected from data loss?
+WA2 determines:
+* Are your _critical stores_ protected from data loss?
 
 ## What WA2 is
 WA2 consists of:
+* **Book**: this guide, explaining both the thinking and the tool.
 * **Intents language**: a small language for expressing architectural policies.
 * **Framework**: vendor-independent best practices built on architectural concepts.
-* **Extension**: editor integration that guides you around problems as you build.
-* **CLI**: enforcement in CI/CD. [not done!]
-* **Book**: this guide, explaining both the thinking and the tool.
+* **Tooling**: 
+  * **CLI**: enforcement in CI/CD.
+  * **Extension**: editor integration that guides you around problems as you build.
 
 ## The Big Idea
 
 WA2 separates:
-* How a system is implemented
+* _How a system is implemented_
 
-*from*
-* What it must guarantee
+from
+* _What it must guarantee_
 
-Rules add evidence to a shared graph.
-Policies evaluate that evidence.
+**Rules** add **evidence** to a shared **graph**.  
+**Policies** evaluate that **evidence**.
 
-Vendor-specific logic produces facts.
+Vendor-specific logic produces **facts**.  
 Architectural intent consumes them.
 
-This keeps governance clean and portable.
+This keeps governance _clean and portable_.  
+And allows us to establish an _evidence chain_ - back to source code.
 
 ## Why This Matters
-Architecture has grown more complex.
+Architectures have grown _far_ more complex.  
 Our tooling has not kept up.
 
 WA2 changes how we think about architecture:

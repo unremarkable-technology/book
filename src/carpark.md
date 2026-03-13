@@ -1,3 +1,13 @@
+rethink intro
+
+chapter 1
+* show abstracting vendor
+
+chapter 2
+* terminology
+* extension as well
+
+
 ---- car park
 ## Value to you
 Today WA2 supports AWS Cloudformation, but it is designed to be vendor independant:
