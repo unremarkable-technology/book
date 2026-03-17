@@ -1,0 +1,35 @@
+// core.wa2
+
+// ANCHOR: structs
+// Architectural node types
+enum Node { Store, Run, Move }
+
+struct Workload {
+   nodes: Node[]
+}
+
+struct Evidence {
+   value: String
+}
+// ANCHOR_END: structs
+
+struct AssertFailure {
+   assertion: String
+   severity: Severity
+   subject: Node?
+   area: Type?
+   message: String?
+}
+
+// Predicates
+predicate source
+predicate severity
+predicate subject
+predicate area
+predicate message	
+
+// Singleton instance
+instance core:workload: core:Workload
+
+// deafult profile
+profile default {}

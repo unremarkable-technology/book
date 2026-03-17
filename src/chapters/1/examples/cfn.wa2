@@ -1,0 +1,62 @@
+// cfn.wa2
+use core
+use aws
+
+type Template
+type Resource
+type Parameter
+type PseudoParameter
+type Output
+type Ref
+type GetAtt
+type Sub
+type SubVarRef
+
+predicate target
+predicate attribute
+predicate resources
+predicate parameters
+predicate outputs
+
+// ANCHOR: project
+derive stores {
+	let cfn_stores = query(aws:cfn:Resource[aws:type in (
+		"AWS::S3::Bucket",
+		"AWS::EC2::Volume",
+		"AWS::EFS::FileSystem"
+		⋮
+	)])
+
+	for s in cfn_stores {
+		let node = add(_, wa2:type, core:Store)
+		add(node, core:source, s)
+		add(core:workload, wa2:contains, node)
+	}
+}
+// ANCHOR_END: project
+
+derive runs {
+	let cfn_runs = query(aws:cfn:Resource[aws:type in (
+		"AWS::EC2::Instance",
+		"AWS::Lambda::Function"
+	)])
+
+	for r in cfn_runs {
+		let node = add(_, wa2:type, core:Run)
+		add(node, core:source, r)
+		add(core:workload, wa2:contains, node)
+	}
+}
+
+derive moves {
+	let cfn_moves = query(aws:cfn:Resource[aws:type in (
+		"AWS::SQS::Queue",
+		"AWS::Kinesis::Stream"
+	)])
+
+	for m in cfn_moves {
+		let node = add(_, wa2:type, core:Move)
+		add(node, core:source, m)
+		add(core:workload, wa2:contains, node)
+	}
+}

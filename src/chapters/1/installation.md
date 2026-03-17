@@ -32,7 +32,7 @@ This script will:
 
 After installation, verify:
 ```console
-$ intent --help
+intent --help
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.
@@ -48,7 +48,7 @@ curl -fsSL https://well.architected.to/install-intent.sh | sh
 
 Verify:
 ```console
-$ intent --help
+intent --help
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.

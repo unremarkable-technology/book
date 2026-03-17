@@ -1,4 +1,0 @@
-Target file stack_2.yaml: parsed and validated successfully.
-Entry file intent_2.wa2: intent parsed and validated successfully.
-
-Success: target satisfies intent of profile example.

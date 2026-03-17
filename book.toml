@@ -10,3 +10,4 @@ build-dir = "public"
 
 [output.html]
 additional-js = ["theme/footer.js"]
+admonitions = true

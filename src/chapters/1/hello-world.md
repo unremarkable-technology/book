@@ -47,7 +47,7 @@ we used `must` so what follows must be *truthy* (not empty, false, or 0).
 We can now use the CLI to check whether our `target` satisfies our `intent`:
 ```bash
 {{#include examples/bash_1.sh}}
-{{#include examples/bash_1.txt}}
+{{#include examples/output_1.txt}}
 ```
 
 We were looking for _evidence_ of classification.
@@ -89,7 +89,7 @@ Update the target CloudFormation to include the classification tag:
 Let’s check the target again:
 ```bash
 {{#include examples/bash_2.sh}}
-{{#include examples/bash_2.txt}}
+{{#include examples/output_2.txt}}
 ```
 
 The policy is satisfied because the required architectural fact now exists.
@@ -127,8 +127,8 @@ Architectural policies evaluate those facts without depending on implementation 
 
 Our tests are green, but they carry technical debt:
 * Our policy is tightly coupled to CloudFormation
-* It asks a compliance question: "did you do it?", not "did you need to?"
 * The evidence is weak; we are not validating the tag value
+* It asks a compliance question: "did you do it?", not "did you need to?"
 
 Let's address that in the next chapter.
 

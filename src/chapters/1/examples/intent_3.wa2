@@ -1,0 +1,54 @@
+use core
+use aws:cfn
+use data
+
+// select which policies are active in this profile
+profile example {
+	policy require_classification
+}
+
+// ANCHOR: without_aws
+// we require everything is given a classification
+policy require_classification {
+	must all_stores_must_be_classified
+}
+
+// we need to know which cfn rx are critical
+rule all_stores_must_be_classified {
+	let scope = query(core:Store)
+
+	for store in scope {
+		// reference the source of this store (will be a cfn resource)
+		let source = query(store/core:source)
+
+		must query(store/core:Evidence/data:Criticality) {
+			subject: source,
+			area: data:Criticality,
+			message: "Stores need to have criticality classification"
+		}
+	}
+}
+// ANCHOR_END: without_aws
+
+// ANCHOR: stores_cfn
+// a derive creates derived information
+derive evidence_of_criticality_from_cfn_rx_tagging {
+	let stores = query(core:Store[core:source/aws:cfn:Resource])
+
+	for store in stores {
+		let source = query(store/core:source)
+		let dc_tag = query(source/aws:Tags/*[aws:Key = "DataCriticality"])
+
+		should dc_tag {
+			subject: source,
+			area: data:Criticality,
+			message: "Add a DataCriticality tag to this Resource"
+		}
+
+		let evidence = add(_, wa2:type, core:Evidence)
+		add(store, wa2:contains, evidence)
+		let fact = add(_, wa2:type, data:Criticality)
+		add(evidence, wa2:contains, fact)
+	}
+}
+// ANCHOR_END: stores_cfn

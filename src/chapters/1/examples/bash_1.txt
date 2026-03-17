@@ -1,9 +1,0 @@
-Target file stack_1.yaml: parsed and validated successfully.
-Entry file intent_1.wa2: intent parsed and validated successfully.
-
-Failed: target does not satisfy intent of profile example
-
-Causes:
-✖ intent_1:all_cfn_rx_must_be_classified: must obligation not satisfied
-  - Subject: DataBucket
-  - Message: Resource must be classified

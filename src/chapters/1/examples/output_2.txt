@@ -1,0 +1,16 @@
+
+SETUP
+-----
+✓ Read target stack_2.yaml
+✓ Parse CloudFormation template
+✓ Validate CloudFormation against specification
+✓ Initialise kernel
+✓ Parse intent entry intent_2.wa2
+✓ Select profile example
+✓ Run analysis
+
+RESULTS
+-------
+✓ Profile: example
+   Target satisfies the selected intent profile.
+   

@@ -1,0 +1,19 @@
+
+SETUP
+-----
+✓ Read target stack_1.yaml
+✓ Parse CloudFormation template
+✓ Validate CloudFormation against specification
+✓ Initialise kernel
+✓ Parse intent entry intent_1.wa2
+✓ Select profile example
+✓ Run analysis
+
+RESULTS
+-------
+✗ Profile: example
+   └─ ✗ intent_1:all_cfn_rx_must_be_classified: must obligation not satisfied
+      Subject: DataBucket
+      
+      Resource must be classified
+      

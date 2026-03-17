@@ -6,11 +6,12 @@ Architectures must evolve with them.
 
 Yet ensuring systems follow best practices remains largely manual.
 
-Best practices live in long PDFs, written without your context.
-Compliance becomes a checkbox exercise, replacing informed decisions with overly broad rules.
-Reviews happen late, risking expensive mistakes and incidents.
-All systems are now distributed, but best practice knowledge is not.
-Teams run hybrid, multi-vendor systems - but our tools reason about them one property at a time.
+The barriers to creating our own standards are too high, so we adopt generic industry ones.  
+Best practices live in long PDFs, written without your context.  
+Compliance becomes a checkbox exercise, replacing informed decisions with overly broad rules.  
+Reviews happen late, risking expensive mistakes and incidents.  
+All systems are now distributed, but best practice knowledge is not.  
+Teams run hybrid, multi-vendor systems - but our tools reason about them one property at a time.  
 
 Well-Architected 2 (WA2) is an _architecture reasoning system_, not a compliance scanner.
 
