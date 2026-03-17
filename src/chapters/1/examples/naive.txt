@@ -1,19 +1,19 @@
 
 SETUP
 -----
-✓ Read target stack_1.yaml
+✓ Read target naive.yaml
 ✓ Parse CloudFormation template
 ✓ Validate CloudFormation against specification
 ✓ Initialise kernel
-✓ Parse intent entry intent_1.wa2
+✓ Parse intent entry naive.wa2
 ✓ Select profile example
 ✓ Run analysis
 
 RESULTS
 -------
 ✗ Profile: example
-   └─ ✗ intent_1:all_cfn_rx_must_be_classified: must obligation not satisfied (error)
+   └─ ✗ naive:all_cfn_rx_must_be_classified: must obligation not satisfied (error)
       Subject: DataBucket
-      Location: stack_1.yaml: line 3
+      Location: naive.yaml: line 3
       Message: Resource must be classified
       

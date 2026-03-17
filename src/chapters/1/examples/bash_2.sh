@@ -1,1 +1,0 @@
-intent check --profile example --target stack_2.yaml --entry intent_2.wa2

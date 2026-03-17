@@ -1,0 +1,47 @@
+
+SETUP
+-----
+✓ Read target tagged.yaml
+✓ Parse CloudFormation template
+✓ Validate CloudFormation against specification
+✓ Initialise kernel
+✓ Parse intent entry tagged.wa2
+✓ Select profile example
+✓ Run analysis
+
+RESULTS
+-------
+✓ Profile: example
+   Target satisfies the selected intent profile.
+   
+
+GRAPH
+-----
+core:workload : core:Workload
+   ├─ -core:source-
+   │  └─ _:88 : aws:cfn:Template
+   │     ├─ -aws:cfn:pseudoParameters-
+   │     │  └─ _:89
+   │     │     ├─ AWS::AccountId : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::NotificationARNs : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::NoValue : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::Partition : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::Region : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::StackId : aws:cfn:PseudoParameter
+   │     │     ├─ AWS::StackName : aws:cfn:PseudoParameter
+   │     │     └─ AWS::URLSuffix : aws:cfn:PseudoParameter
+   │     └─ -aws:cfn:resources-
+   │        └─ _:98
+   │           └─ DataBucket : aws:cfn:Resource
+   │              aws:type="AWS::S3::Bucket"
+   │              aws:logicalId="DataBucket"
+   │              
+   │              ├─ -aws:Tags-
+   │              │  └─ _:100
+   │              │     └─ _:102
+   │              │        aws:Key="DataCriticality"
+   │              │        aws:Value="Important"
+   │              │        
+   │              └─ _:106 : data:Criticality
+   └─ _:105 : core:Store
+      └─ -core:source- DataBucket : aws:cfn:Resource (→)

@@ -1,0 +1,20 @@
+
+SETUP
+-----
+✓ Read target protect.yaml
+✓ Parse CloudFormation template
+✓ Validate CloudFormation against specification
+✓ Initialise kernel
+✓ Parse intent entry protect.wa2
+✓ Select profile example
+✓ Run analysis
+
+RESULTS
+-------
+✗ Profile: example
+   └─ ✗ protect:ensure_critical_stores_are_protected: must obligation not satisfied (error)
+      Subject: DataBucket
+      Location: protect.yaml: line 4
+      Area: data:isResilient
+      Message: Critical stores need to be protected from loss
+      

@@ -1,0 +1,1 @@
+intent check --profile example --target resilient.yaml --entry protect.wa2

@@ -63,5 +63,11 @@ WA2 changes how we think about architecture:
 
 # Current Scope
 
+> [!WARNING]
+> WA2 in a work in progress, and **should not be used for production workloads**  
+> As WA2 evolves we continue to discover things that leads to breaking changes, its very volatile.  
+> It's absolutely is missing features, lacks consistency, and has bugs - **beware!**  
+> This book is updated in parallel with tooling and framework, so check back for progress.
 * Today WA2 supports AWS CloudFormation (JSON & YAML).
 * It is designed to support additional systems over time.
+

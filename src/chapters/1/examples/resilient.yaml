@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Parameters:
+  DataBucketName:
+    Type: String
+  DestinationBucketArn:
+    Type: String
+  DestinationAccountId:
+    Type: String
+  ReplicationRoleName:
+    Type: String
+    Default: s3-replication-role
+
+Resources:
+  # IAM role assumed by S3 to perform cross-account replication
+  # kept minimal and service-scoped to avoid broader IAM surface
+  ReplicationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref ReplicationRoleName
+
+      # allow the S3 service to assume this role
+      # no human or workload access
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sts:AssumeRole
+
+  # Managed policy attached to the replication role
+  # split out to avoid inline IAM policies (guard requirement)
+  # permissions are tightly scoped to:
+  #  - read versioned data from the source bucket
+  #  - write replicated objects + deletes to the destination bucket
+  ReplicationPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub "${AWS::StackName}-s3-replication"
+
+      # attached only to the replication role
+      Roles:
+        - !Ref ReplicationRole
+
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          # allow S3 to read replication config and list source bucket
+          - Effect: Allow
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub "arn:${AWS::Partition}:s3:::${DataBucketName}"
+
+          # allow S3 to read all required object metadata + versions
+          # needed for correct replication of versioned + protected objects
+          - Effect: Allow
+            Action:
+              - s3:GetObjectVersionForReplication
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+              - s3:GetObjectRetention
+              - s3:GetObjectLegalHold
+            Resource: !Sub "arn:${AWS::Partition}:s3:::${DataBucketName}/*"
+
+          # allow S3 to write replicated objects, deletes, and tags
+          # into the destination account bucket
+          - Effect: Allow
+            Action:
+              - s3:ReplicateObject
+              - s3:ReplicateDelete
+              - s3:ReplicateTags
+              - s3:ObjectOwnerOverrideToBucketOwner
+            Resource: !Sub "${DestinationBucketArn}/*"
+
+  DataBucket:
+    Type: AWS::S3::Bucket
+
+    Properties:
+      BucketName: !Ref DataBucketName
+
+      # provide native undo for delete/overwrites, but ^cost
+      VersioningConfiguration:
+        Status: Enabled
+
+      # replicate the data bucket to another account
+      ReplicationConfiguration:
+        Role: !GetAtt ReplicationRole.Arn
+        Rules:
+          - Id: ReplicateAllToBackupAccount
+            Status: Enabled
+            DeleteMarkerReplication:
+              Status: Enabled
+            Destination:
+              Bucket: !Ref DestinationBucketArn
+              Account: !Ref DestinationAccountId
+              AccessControlTranslation:
+                Owner: Destination
+
+      Tags:
+        - Key: DataCriticality
+          Value: MissionCritical # major impact if we lose

@@ -1,0 +1,1 @@
+intent check --profile example --target naive.yaml --entry naive.wa2

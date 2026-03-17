@@ -1,0 +1,1 @@
+intent check --profile example --target tagged.yaml --entry unvendor.wa2

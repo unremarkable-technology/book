@@ -13,8 +13,9 @@ Our target will be this simple AWS CloudFormation template.
 It creates a single S3 bucket.
 
 ```yaml
-{{#include examples/stack_1.yaml}}
+{{#include examples/naive.yaml}}
 ```
+
 We might _assume_ that this bucket stores data because it is named `DataBucket`,
 but that is just a guess at this point.
 
@@ -23,7 +24,7 @@ We want to ask a question of the target, did you classify your data?
 
 Let's write a test to do that:
 ```wa2
-{{#include examples/intent_1.wa2}}
+{{#include examples/naive.wa2}}
 ```
 The code above is written in the `intent` language:
 * we `use` some supporting _namespaces_ for AWS CloudFormation and data classification
@@ -46,8 +47,8 @@ we used `must` so what follows must be *truthy* (not empty, false, or 0).
 ## Run the test
 We can now use the CLI to check whether our `target` satisfies our `intent`:
 ```bash
-{{#include examples/bash_1.sh}}
-{{#include examples/output_1.txt}}
+{{#include examples/naive.sh}}
+{{#include examples/naive.txt}}
 ```
 
 We were looking for _evidence_ of classification.
@@ -72,7 +73,7 @@ In our CloudFormation we plan to use a `DataCriticality` tag, so lets query for 
 We want this code to run every time WA2 tries to satisfy our intent.
 We use the `derive` keyword to say it is going to add to the graph:
 ```wa2
-{{#include examples/intent_2.wa2:focus}}
+{{#include examples/tagged.wa2:focus}}
 ```
 
 Our intent code queries for all CloudFormation resources.
@@ -82,14 +83,14 @@ then we add `data:Criticality` evidence to that `resource` in the graph.
 ### Fix the target
 Update the target CloudFormation to include the classification tag:
 ```yaml
-{{#include examples/stack_2.yaml}}
+{{#include examples/tagged.yaml}}
 ```
 
 ### Run the test (again)
 Let’s check the target again:
 ```bash
-{{#include examples/bash_2.sh}}
-{{#include examples/output_2.txt}}
+{{#include examples/tagged.sh}}
+{{#include examples/tagged.txt}}
 ```
 
 The policy is satisfied because the required architectural fact now exists.
@@ -102,19 +103,19 @@ Your CloudFormation becomes nodes and relationships in the **WA2 graph**.
 Rules and derives operate on that graph.
 
 ```
-CloudFormation
-       ↓
-    WA2 Graph
-       ↓
-  derive → evidence
+       CloudFormation
               ↓
-             rule
-              ↓
-           policy
-              ↓
-           profile
-              ↓
-      evaluation result
+           WA2 Graph
+           ↓       ↑
+        derive → evidence
+                   ↓
+                 rule
+                   ↓
+                policy
+                   ↓
+                profile
+                   ↓
+           evaluation result
 ```
 * `derive` statements add `evidence` to the `graph`
 * `rules` evaluate that evidence
@@ -122,6 +123,14 @@ CloudFormation
 
 Vendor-specific logic derives facts about the system.  
 Architectural policies evaluate those facts without depending on implementation details.
+
+### Peering at the graph
+Sometimes its useful to look at the graph, which is displayed
+as a containment tree with `→` to indicate non-containing edges:
+```bash
+{{#include examples/graph.sh}}
+{{#include examples/graph.txt}}
+```
 
 ## Refactor as needed
 

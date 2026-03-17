@@ -1,11 +1,11 @@
 
 SETUP
 -----
-✓ Read target stack_2.yaml
+✓ Read target tagged.yaml
 ✓ Parse CloudFormation template
 ✓ Validate CloudFormation against specification
 ✓ Initialise kernel
-✓ Parse intent entry intent_4.wa2
+✓ Parse intent entry unvendor.wa2
 ✓ Select profile example
 ✓ Run analysis
 

@@ -1,0 +1,1 @@
+curl -fsSL https://well.architected.to/install-intent.sh | sh

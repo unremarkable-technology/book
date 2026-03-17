@@ -1,0 +1,16 @@
+
+SETUP
+-----
+✓ Read target resilient.yaml
+✓ Parse CloudFormation template
+✓ Validate CloudFormation against specification
+✓ Initialise kernel
+✓ Parse intent entry protect.wa2
+✓ Select profile example
+✓ Run analysis
+
+RESULTS
+-------
+✓ Profile: example
+   Target satisfies the selected intent profile.
+   

@@ -21,8 +21,8 @@ book assumes that version.
 > You can place the `intent` binary wherever you want, but ensure it's on your PATH.
 
 If you're using Linux or macOS, open a terminal and run:
-```console
-curl -fsSL https://well.architected.to/install-intent.sh | sh
+```bash
+{{#include examples/install.sh}}
 ```
 
 This script will:
@@ -32,7 +32,7 @@ This script will:
 
 After installation, verify:
 ```console
-intent --help
+{{#include examples/verify.sh}}
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.
@@ -42,13 +42,13 @@ If the command is not found, ensure ~/.local/bin is on your PATH.
 #### WSL 2
 
 Install using the same command as Linux:
-```console
-curl -fsSL https://well.architected.to/install-intent.sh | sh
+```bash
+{{#include examples/install.sh}}
 ```
 
 Verify:
 ```console
-intent --help
+{{#include examples/verify.sh}}
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.
@@ -61,8 +61,7 @@ If the command is not found, ensure ~/.local/bin is on your PATH.
 
 Download the latest release. The following command assumes you have PowerShell available:
 ```PowerShell
-iwr https://github.com/unremarkable-technology/tooling/releases/latest/download/intent-win32-x64.zip -OutFile intent.zip
-Expand-Archive intent.zip -DestinationPath $env:USERPROFILE\bin -Force
+{{#include examples/install.ps1}}
 ```
 Then verify:
 
