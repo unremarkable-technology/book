@@ -21,6 +21,7 @@ As you build or evolve architectures, WA2 guides you, explaining best practices,
 
 Instead of asking:
 * Have you backed up this S3 bucket?
+
 WA2 determines:
 * Are your _critical stores_ protected from data loss?
 

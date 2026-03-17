@@ -1,3 +1,4 @@
+// ANCHOR: all
 use core
 use aws:cfn
 use data
@@ -120,3 +121,4 @@ derive store_resilience_from_s3_replication {
 	}
 }
 // ANCHOR: evidence
+// ANCHOR_END: all

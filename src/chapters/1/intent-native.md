@@ -141,8 +141,8 @@ We write the new rule that says that all critical stores must be resilient:
 ```
 
 ### Identify which stores are Critical
-We are going to enrich our tagging logic to
-identify if a store is critical or not based.
+We are going to add to our tagging logic to
+identify if a store is critical or not based
 on our taxonomy:
 ```wa2
 {{#include examples/protect.wa2:tagging}}
@@ -187,8 +187,32 @@ goverance (more later on this) set of `derives`:
 ```yaml
 {{#include examples/resilient.yaml}}
 ```
-Let’s check the target again:
+
+## Results
+
+Now when we check the target, we see our intent is satisified:
 ```bash
 {{#include examples/resilient.sh}}
 {{#include examples/resilient.txt}}
 ```
+
+We now have intent code:
+```wa2
+{{#include examples/protect.wa2:policy}}
+```
+creating a policy that checks:
+* are data stores classified accoring to our criticality taxonomy?
+* **Are your _critical stores_ protected from data loss?**
+
+wit the benifits of:
+* without writing policy against a vendor specific implementation
+* having overly broad sweeping compliance requirements that are overkill
+* noisy false alarms for resources that don't need that level of protection
+* losing sight of the architectural policy we are trying to encourage
+* written in one small language, not a polygot of json, yaml, python etc
+
+We have ~115 lines of intent code, but most of this would be standard
+across any target system you built, and later we will show how you can
+package up common elements into your own namespace.
+
+But first, lets bring this capacbility into the home of engineers, our IDE.
