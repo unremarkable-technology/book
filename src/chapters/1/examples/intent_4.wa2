@@ -56,7 +56,7 @@ derive evidence_of_criticality_from_cfn_rx_tagging {
 
 		// check the tag matches
 		should query(dc_tag/aws:Value) as(DataCriticality) {
-			subject: source,
+			subject: dc_tag,
 			area: DataCriticality,
 			message: "DataCriticality tag must be a value from DataCriticality taxonomy"
 		}

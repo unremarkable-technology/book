@@ -12,8 +12,8 @@ SETUP
 RESULTS
 -------
 ✗ Profile: example
-   └─ ✗ intent_1:all_cfn_rx_must_be_classified: must obligation not satisfied
+   └─ ✗ intent_1:all_cfn_rx_must_be_classified: must obligation not satisfied (error)
       Subject: DataBucket
-      
-      Resource must be classified
+      Location: stack_1.yaml: line 3
+      Message: Resource must be classified
       
