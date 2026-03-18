@@ -56,6 +56,17 @@ Right now, no such evidence exists.
 We have not _yet_ told WA2 how that evidence should be produced.
 **So the policy fails, correctly.**
 
+> [!NOTE]
+> There are three sections in the output
+> * PREPARE: to analyse by loading and parsing files
+> * RESULTS: show success or issues
+> * VALIDATION: of target
+> Validation is done in parallel, and uses the CloudFormation Specification from AWS.
+> Since validation against the specification takes time, we optimise the dev experience
+> by running it in the background, hence why it appears last.
+>
+> Add the `--novalidation` parameter to disable validation for even faster execution.
+
 You can view this as a Test-Driven Development (TDD[^tdd]) approach:
 1. write a test
 1. see the test fail

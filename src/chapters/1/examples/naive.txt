@@ -1,9 +1,9 @@
 
-SETUP
------
+PREPARE
+-------
 ✓ Read target naive.yaml
-✓ Parse CloudFormation template
-✓ Validate CloudFormation against specification
+• Schedule CloudFormation validation
+   Validation will run concurrently and report after results.
 ✓ Initialise kernel
 ✓ Parse intent entry naive.wa2
 ✓ Select profile example
@@ -16,4 +16,7 @@ RESULTS
       Subject: DataBucket
       Location: naive.yaml: line 3
       Message: Resource must be classified
-      
+
+VALIDATION
+----------
+✓ Validate CloudFormation against specification
