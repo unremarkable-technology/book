@@ -13,12 +13,12 @@ enum DataCriticality {
 
 // select which policies are active in this profile
 profile example {
-	policy require_classification
+	policy protect_stores_based_on_classification
 }
 
 // ANCHOR: policy
-// we require everything is given a classification
-policy require_classification {
+// protect critical data, which we know through classification
+policy protect_stores_based_on_classification {
 	must all_stores_must_be_classified
 	must ensure_critical_stores_are_protected
 }

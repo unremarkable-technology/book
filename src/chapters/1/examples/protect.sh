@@ -1,1 +1,1 @@
-intent check --profile example --target tagged.yaml --entry protect.wa2
+intent check --profile example --target protect.yaml --entry protect.wa2

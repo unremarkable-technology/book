@@ -1,9 +1,9 @@
 
-SETUP
------
+PREPARE
+-------
 ✓ Read target protect.yaml
-✓ Parse CloudFormation template
-✓ Validate CloudFormation against specification
+• Schedule CloudFormation validation
+   Validation will run concurrently and report after results.
 ✓ Initialise kernel
 ✓ Parse intent entry protect.wa2
 ✓ Select profile example
@@ -17,4 +17,7 @@ RESULTS
       Location: protect.yaml: line 4
       Area: data:isResilient
       Message: Critical stores need to be protected from loss
-      
+
+VALIDATION
+----------
+✓ Validate CloudFormation against specification

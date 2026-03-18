@@ -1,9 +1,9 @@
 
-SETUP
------
+PREPARE
+-------
 ✓ Read target tagged.yaml
-✓ Parse CloudFormation template
-✓ Validate CloudFormation against specification
+• Schedule CloudFormation validation
+   Validation will run concurrently and report after results.
 ✓ Initialise kernel
 ✓ Parse intent entry tagged.wa2
 ✓ Select profile example
@@ -13,7 +13,6 @@ RESULTS
 -------
 ✓ Profile: example
    Target satisfies the selected intent profile.
-   
 
 GRAPH
 -----
@@ -35,13 +34,15 @@ core:workload : core:Workload
    │           └─ DataBucket : aws:cfn:Resource
    │              aws:type="AWS::S3::Bucket"
    │              aws:logicalId="DataBucket"
-   │              
    │              ├─ -aws:Tags-
    │              │  └─ _:100
    │              │     └─ _:102
    │              │        aws:Key="DataCriticality"
    │              │        aws:Value="Important"
-   │              │        
    │              └─ _:106 : data:Criticality
    └─ _:105 : core:Store
       └─ -core:source- DataBucket : aws:cfn:Resource (→)
+
+VALIDATION
+----------
+✓ Validate CloudFormation against specification

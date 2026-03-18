@@ -1,9 +1,9 @@
 
-SETUP
------
+PREPARE
+-------
 ✓ Read target tagged.yaml
-✓ Parse CloudFormation template
-✓ Validate CloudFormation against specification
+• Schedule CloudFormation validation
+   Validation will run concurrently and report after results.
 ✓ Initialise kernel
 ✓ Parse intent entry taxonomy.wa2
 ✓ Select profile example
@@ -13,4 +13,7 @@ RESULTS
 -------
 ✓ Profile: example
    Target satisfies the selected intent profile.
-   
+
+VALIDATION
+----------
+✓ Validate CloudFormation against specification
