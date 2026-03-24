@@ -25,9 +25,17 @@ find src/chapters -path '*/examples/*.sh' | while read -r script; do
   case "$script" in
     */install.sh) continue ;;
   esac
-  out="${script%.sh}.out"
+
+  dir=$(dirname "$script")
+  file=$(basename "$script")
+  base=${file%.sh}
+  out="$dir/$base.out"
+
   echo "Running $script -> $out"
-  if ! sh "$script" > "$out" 2>&1; then
+  if ! (
+    cd "$dir"
+    sh "./$file"
+  ) > "$base.out" 2>&1; then
     echo "FAILED: $script"
     cat "$out"
     exit 1
