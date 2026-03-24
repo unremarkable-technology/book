@@ -195,6 +195,8 @@ Now when we check the target, we see our intent is satisified:
 {{#include examples/resilient.sh}}
 {{#include examples/resilient.out}}
 ```
+> [!TIP]
+> We used the `--verbose` flag to show whats been evaluated in this check
 
 We now have intent code:
 ```wa2
@@ -204,7 +206,7 @@ creating a policy that checks:
 * are data stores classified accoring to our criticality taxonomy?
 * **Are your _critical stores_ protected from data loss?**
 
-wit the benifits of:
+wit the benefits of:
 * without writing policy against a vendor specific implementation
 * having overly broad sweeping compliance requirements that are overkill
 * noisy false alarms for resources that don't need that level of protection
