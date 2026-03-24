@@ -48,7 +48,7 @@ we used `must` so what follows must be *truthy* (not empty, false, or 0).
 We can now use the CLI to check whether our `target` satisfies our `intent`:
 ```bash
 {{#include examples/naive.sh}}
-{{#include examples/naive.txt}}
+{{#include examples/naive.out}}
 ```
 
 We were looking for _evidence_ of classification.
@@ -101,7 +101,7 @@ Update the target CloudFormation to include the classification tag:
 Let’s check the target again:
 ```bash
 {{#include examples/tagged.sh}}
-{{#include examples/tagged.txt}}
+{{#include examples/tagged.out}}
 ```
 
 The policy is satisfied because the required architectural fact now exists.
@@ -140,7 +140,7 @@ Sometimes its useful to look at the graph, which is displayed
 as a containment tree with `→` to indicate non-containing edges:
 ```bash
 {{#include examples/graph.sh}}
-{{#include examples/graph.txt}}
+{{#include examples/graph.out}}
 ```
 
 ## Refactor as needed
@@ -154,4 +154,4 @@ Let's address that in the next chapter.
 
 [^tdd]: https://en.wikipedia.org/wiki/Test-driven_development
 
-[^modals]: RFC 2119 https://www.ietf.org/rfc/rfc2119.txt
+[^modals]: RFC 2119 https://www.ietf.org/rfc/rfc2119.out

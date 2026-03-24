@@ -84,7 +84,7 @@ So now we can run again to ensure our refactoring has not broken anything:
 Let’s check the target again:
 ```bash
 {{#include examples/unvendor.sh}}
-{{#include examples/unvendor.txt}}
+{{#include examples/unvendor.out}}
 ```
 
 So we have fixed our first piece of debt, having policy to tied to implementation detail.
@@ -122,7 +122,7 @@ and our polict would still work.
 Let’s check the target again:
 ```bash
 {{#include examples/taxonomy.sh}}
-{{#include examples/taxonomy.txt}}
+{{#include examples/taxonomy.out}}
 ```
 
 ## Acting on Intent
@@ -173,7 +173,7 @@ We need to update our target to make this critical for our example:
 Let’s check the target again:
 ```bash
 {{#include examples/protect.sh}}
-{{#include examples/protect.txt}}
+{{#include examples/protect.out}}
 ```
 
 So the result is telling use that there are critical stores that
@@ -193,7 +193,7 @@ goverance (more later on this) set of `derives`:
 Now when we check the target, we see our intent is satisified:
 ```bash
 {{#include examples/resilient.sh}}
-{{#include examples/resilient.txt}}
+{{#include examples/resilient.out}}
 ```
 
 We now have intent code:
