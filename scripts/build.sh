@@ -15,10 +15,23 @@ mkdir -p "$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
 sh src/chapters/1/examples/install.sh
 
+# verify intent is available
+echo "PATH=$PATH"
+command -v intent
+intent --help >/dev/null 2>&1
+
 # generate outputs
 find src/chapters -path '*/examples/*.sh' | while read -r script; do
+  case "$script" in
+    */install.sh) continue ;;
+  esac
   out="${script%.sh}.out"
-  sh "$script" > "$out"
+  echo "Running $script -> $out"
+  if ! sh "$script" > "$out" 2>&1; then
+    echo "FAILED: $script"
+    cat "$out"
+    exit 1
+  fi
 done
 
 # Build book
