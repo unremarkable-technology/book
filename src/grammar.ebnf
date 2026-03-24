@@ -1,0 +1,131 @@
+// grammer.ebnf: WA2 Intent Language Grammar
+
+// ANCHOR: all
+// ANCHOR: whitespace_and_comments
+Whitespace    ::= ' ' | '\t' | '\n' | '\r' .
+LineComment   ::= '//' [^\n]* '\n' .
+BlockComment  ::= '/*' .* '*/' .
+// ANCHOR_END: whitespace_and_comments
+
+// ANCHOR: identifiers
+Ident         ::= [a-zA-Z_][a-zA-Z0-9_]* .
+QualifiedName ::= Ident (':' Ident)* .
+// ANCHOR_END: identifiers
+
+// ANCHOR: literals
+StringLiteral ::= '"' [^"]* '"' .
+BoolLiteral   ::= 'true' | 'false' .
+// ANCHOR_END: literals
+
+// ANCHOR: toplevel
+File ::= Item* .
+
+Item ::= NamespaceDecl
+       | UseDecl
+       | TypeDecl
+       | StructDecl
+       | EnumDecl
+       | PredicateDecl
+       | InstanceDecl
+       | RuleDecl
+       | DeriveDecl
+       | PolicyDecl
+       | ProfileDecl
+       | ProfileSelection .
+// ANCHOR_END: toplevel
+
+// ANCHOR: declarations
+NamespaceDecl ::= 'namespace' Ident '{' Item* '}' .
+
+UseDecl ::= 'use' QualifiedName .
+
+TypeDecl ::= Annotation* 'type' Ident .
+
+StructDecl ::= Annotation* 'struct' Ident '{' FieldDecl* '}' .
+FieldDecl  ::= Ident ':' TypeRef .
+
+EnumDecl    ::= Annotation* 'enum' Ident '{' VariantList '}' .
+VariantList ::= Ident (',' Ident)* ','? .
+
+PredicateDecl ::= 'predicate' Ident .
+
+InstanceDecl ::= 'instance' QualifiedName ':' QualifiedName .
+// ANCHOR_END: declarations
+
+// ANCHOR: rules_derives
+RuleDecl   ::= 'rule' Ident '{' Statement* '}' .
+
+DeriveDecl ::= 'derive' Ident '{' Statement* '}' .
+// ANCHOR_END: rules_derives
+
+// ANCHOR: policies_profiles
+PolicyDecl    ::= 'policy' Ident '{' PolicyBinding* '}' .
+PolicyBinding ::= Modal QualifiedName .
+
+ProfileDecl ::= 'profile' QualifiedName '{' ProfileItem* '}' .
+ProfileItem ::= 'policy' QualifiedName .
+
+ProfileSelection ::= 'profile' QualifiedName .
+// ANCHOR_END: policies_profiles
+
+// ANCHOR: statements
+Statement ::= LetStatement
+            | ForStatement
+            | IfStatement
+            | ModalStatement
+            | AddStatement .
+
+LetStatement ::= 'let' Ident '=' Expr .
+
+ForStatement ::= 'for' Ident 'in' Expr '{' Statement* '}' .
+
+IfStatement ::= 'if' Expr '{' Statement* '}' ('else' '{' Statement* '}')? .
+
+ModalStatement ::= Modal Expr ModalMetadata? .
+ModalMetadata  ::= '{' MetadataItem (',' MetadataItem)* ','? '}' .
+MetadataItem   ::= 'subject' ':' Expr
+                 | 'area' ':' QualifiedName
+                 | 'message' ':' StringLiteral .
+
+AddStatement ::= 'add' '(' Expr ',' QualifiedName ',' Expr ')' .
+
+Modal ::= 'must' | 'should' | 'may' .
+// ANCHOR_END: statements
+
+// ANCHOR: expressions
+Expr ::= PrimaryExpr AsExpr? .
+
+PrimaryExpr ::= QueryExpr
+              | AddExpr
+              | MatchExpr
+              | EmptyExpr
+              | QualifiedName
+              | Ident
+              | StringLiteral
+              | BoolLiteral
+              | '_' .
+
+AsExpr ::= 'as' '(' QualifiedName ')' .
+
+QueryExpr     ::= 'query' '(' QueryPath ')' .
+QueryPath     ::= QueryStep ('/' QueryStep)* .
+QueryStep     ::= NodeTest Predicate* .
+NodeTest      ::= QualifiedName | Ident | '*' .
+Predicate     ::= '[' PredicateExpr ']' .
+PredicateExpr ::= QueryPath
+                | QueryPath '=' StringLiteral .
+
+AddExpr ::= 'add' '(' Expr ',' QualifiedName ',' Expr ')' .
+
+MatchExpr ::= 'match' Expr '{' MatchArm* '}' .
+MatchArm  ::= Pattern (',' Pattern)* '=>' Expr ','? .
+Pattern   ::= Ident | 'else' .
+
+EmptyExpr ::= 'empty' '(' Expr ')' .
+// ANCHOR_END: expressions
+
+// ANCHOR: annotations
+Annotation    ::= '@#' Ident '(' AnnotationArg (',' AnnotationArg)* ')' .
+AnnotationArg ::= Ident '=' Literal .
+// ANCHOR_END: annotations
+// ANCHOR_END: all

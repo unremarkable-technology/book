@@ -7,3 +7,6 @@
   - [Hello, World!](./chapters/1/hello-world.md)
   - [Intent native](./chapters/1/intent-native.md)
   - [Hello, World in IDE!](./chapters/1/hello-lsp.md)
+
+- [Appendices](./Appendices.md)
+  - [Language specification](./LANGUAGE_SPEC.md)
