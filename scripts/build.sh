@@ -23,7 +23,7 @@ intent --help >/dev/null 2>&1
 # generate outputs
 find src/chapters -path '*/examples/*.sh' | while read -r script; do
   case "$script" in
-    */install.sh) continue ;;
+	 */install.sh) continue ;;
   esac
 
   dir=$(dirname "$script")
@@ -32,14 +32,14 @@ find src/chapters -path '*/examples/*.sh' | while read -r script; do
   out="$dir/$base.out"
 
   echo "Running $script -> $out"
-  if ! (
-    cd "$dir"
-    sh "./$file"
-  ) > "$base.out" 2>&1; then
-    echo "FAILED: $script"
-    cat "$out"
-    exit 1
-  fi
+	if ! (
+		cd "$dir"
+		sh "./$file" > "$base.out" 2>&1
+	); then
+		echo "FAILED: $script"
+		cat "$out"
+		exit 1
+	fi
 done
 
 # Build book
