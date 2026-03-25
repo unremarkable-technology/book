@@ -33,6 +33,7 @@ This script will:
 After installation, verify:
 ```console
 {{#include examples/verify.sh}}
+{{#include examples/verify.out}}
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.
@@ -49,6 +50,7 @@ Install using the same command as Linux:
 Verify:
 ```console
 {{#include examples/verify.sh}}
+{{#include examples/verify.out}}
 ```
 
 If the command is not found, ensure ~/.local/bin is on your PATH.
@@ -66,7 +68,8 @@ Download the latest release. The following command assumes you have PowerShell a
 Then verify:
 
 ```PowerShell
-intent --help
+{{#include examples/verify.sh}}
+{{#include examples/verify.out}}
 ```
 
 After installation you should be able to run intent from any terminal.

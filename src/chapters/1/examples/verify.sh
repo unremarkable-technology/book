@@ -1,1 +1,1 @@
-intent --help
+intent --version
